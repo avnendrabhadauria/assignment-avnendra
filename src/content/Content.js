@@ -1,7 +1,14 @@
+import "./content.scss";
+
 import React from "react";
+import Slots from "../slot/Slots";
 
 function Content(props) {
-  return <div>Main Content</div>;
+  return (
+    <div className="main-data-container">
+      <Slots />
+    </div>
+  );
 }
 
 export default Content;

@@ -1,0 +1,21 @@
+.slot {
+  box-shadow: -4px 2px 18px rgba(172, 216, 230, 0.87);
+  min-height: 200px;
+  min-width: 31.3%;
+  margin: 1%;
+}
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .slot {
+    min-width: 100%;
+  }
+}
+@media (max-width: 900px) and (min-width: 700px) {
+  .slot {
+    min-width: 31.3%;
+  }
+}

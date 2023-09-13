@@ -16,7 +16,7 @@ function Header(props) {
     <header className="header">
       {context?.creds.userName && (
         <div className="header-section">
-          <h1> Hi {` ${context?.creds.userName}`}</h1>
+          <h1> Hi {` ${context?.creds.userName.slice(0, 4)} !`}</h1>
           <button onClick={clearData}>Logout</button>
         </div>
       )}
