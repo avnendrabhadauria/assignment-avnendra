@@ -1,0 +1,19 @@
+.input-element {
+  display: flex;
+  align-items: center;
+  margin: 5% 0;
+  .input-tag {
+    padding: 1%;
+    width: 46%;
+    height: 46px;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 3%;
+  }
+  label {
+    font-size: 2rem;
+    margin-right: 5%;
+    display: inline-block;
+    width: 30%;
+  }
+}

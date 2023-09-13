@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
 
-function App() {
+import React, { useState } from "react";
+
+import Context from "./context/UserContext";
+import Header from "./header/Header";
+import Main from "./maincontainer/Main";
+import { initialState } from "./constant";
+
+function App(props) {
+  const data = localStorage.getItem("token");
+  const [creds, setCreds] = useState(() => {
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return initialState;
+    }
+  });
+  const { Provider } = Context;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider value={{ creds, setCreds }}>
+      <div className="app">
+        <Header />
+        <Main />
+      </div>
+    </Provider>
   );
 }
 
