@@ -9,6 +9,7 @@ import { initialState } from "./constant";
 
 function App(props) {
   const data = localStorage.getItem("token");
+
   const [creds, setCreds] = useState(() => {
     if (data) {
       return JSON.parse(data);

@@ -11,12 +11,15 @@ function Header(props) {
     context?.setCreds(initialState);
     localStorage.clear();
   };
+
   return (
     <header className="header">
-      <div className="header-section">
-        <h1> Hi {` ${context?.creds.userName}`}</h1>
-        <button onClick={clearData}>Logout</button>
-      </div>
+      {context?.creds.userName && (
+        <div className="header-section">
+          <h1> Hi {` ${context?.creds.userName}`}</h1>
+          <button onClick={clearData}>Logout</button>
+        </div>
+      )}
     </header>
   );
 }
