@@ -1,1 +1,1 @@
-export const initialState = { userName: "", password: "" };
+export const initialState = { userName: "", password: "", totalTime: 480 };

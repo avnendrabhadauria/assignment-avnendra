@@ -9,6 +9,7 @@ function Header(props) {
   const context = useContext(Context);
   const clearData = () => {
     context?.setCreds(initialState);
+    context?.setData([]);
     localStorage.clear();
   };
 

@@ -5,7 +5,7 @@
   position: fixed;
   width: 80%;
   bottom: 0;
-  height: 48px;
+  padding: 1% 0%;
 
   .addSlot {
     display: flex;
@@ -13,15 +13,20 @@
     align-items: center;
     margin: 0 10%;
     button {
-      width: 1.5rem;
+      width: 4rem;
       background: red;
-      height: 1.5rem;
+      height: 4rem;
+      border: none;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       &:hover {
         cursor: pointer;
+      }
+      &:disabled {
+        background: rgb(243, 201, 201);
+        cursor: not-allowed;
       }
     }
   }

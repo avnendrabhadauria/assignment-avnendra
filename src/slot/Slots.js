@@ -1,20 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import Context from "../context/UserContext";
 import Slot from "./Slot";
 
-function Slots(props) {
+function Slots() {
+  const context = useContext(Context);
+  debugger;
   return (
     <div className="slots">
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
-      <Slot />
+      {context?.data?.map((d, index) => (
+        <Slot key={d + index} index={index} data={d} />
+      ))}
     </div>
   );
 }

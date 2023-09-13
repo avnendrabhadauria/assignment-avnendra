@@ -4,9 +4,9 @@ import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
 import Input from "../common/Input";
+import { initialState } from "../constant";
 
 function Signin(props) {
-  const initialState = { userName: "", password: "" };
   const [creds, setCreds] = useState(initialState);
 
   const context = useContext(Context);
