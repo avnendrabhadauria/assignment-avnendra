@@ -4,7 +4,6 @@ import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
 import Input from "../common/Input";
-import { initialState } from "../constant";
 
 function UserInputs({ toggle }) {
   const [taskItem, setTaskItem] = useState({

@@ -17,14 +17,25 @@ function Footer(props) {
       const newSlot = `slot${prevState?.length + 1}`;
       let finalData = [
         ...prevState,
-        { slot: newSlot, timeOccupied: 30, task: [] },
+        { slot: newSlot, mintimeOccupied: 30, task: [] },
       ];
       localStorage.setItem("dataLocal", JSON.stringify(finalData));
       return finalData;
     });
   };
-  const totalCosumedMins = data?.reduce((total, d) => {
-    return total + d?.timeOccupied;
+  const totalCosumedMins = data?.reduce((total, outerData) => {
+    const timeOccupiedbyAllTask = outerData?.task?.reduce(
+      (innerTotal, innerData) => {
+        return innerTotal + Number(innerData?.time);
+      },
+      0
+    );
+    const currectTime =
+      timeOccupiedbyAllTask > outerData?.mintimeOccupied
+        ? timeOccupiedbyAllTask
+        : outerData?.mintimeOccupied;
+
+    return total + currectTime;
   }, 0);
   if (state) {
     const scrollY =
@@ -54,7 +65,7 @@ function Footer(props) {
           <button
             className="btn-task"
             onClick={openAddItems}
-            disabled={totalTime - (totalCosumedMins + 30) < 0}
+            disabled={totalTime - totalCosumedMins <= 0}
           >
             <i className="plus"></i>
           </button>
