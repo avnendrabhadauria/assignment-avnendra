@@ -27,7 +27,7 @@ function Signin(props) {
         <div>
           <Input
             type="text"
-            placeholder="Enter Username"
+            placeholder="Enter username"
             name="userName"
             required={true}
             label="Username"
@@ -38,7 +38,7 @@ function Signin(props) {
 
           <Input
             type="password"
-            placeholder="Enter Password"
+            placeholder="Enter password"
             name="password"
             required={true}
             label="Password"

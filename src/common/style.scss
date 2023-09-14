@@ -1,3 +1,5 @@
+@import "../common-scss/mixin/common.scss";
+
 .input-element {
   display: flex;
   align-items: center;
@@ -8,11 +10,16 @@
     height: 46px;
     font-size: 1rem;
     outline: none;
-    border-radius: 3%;
+    border: 2px solid $base-background-color;
+    border-radius: 8px;
+    &:focus {
+      // border: 2px solid $base-input-focus-color-border;
+      background-color: $base-input-focus-color;
+    }
   }
   label {
     font-size: 2rem;
-    margin-right: 5%;
+    // margin-right: 5%;
     display: inline-block;
     width: 30%;
   }

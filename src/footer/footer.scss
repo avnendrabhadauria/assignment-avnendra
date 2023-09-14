@@ -10,11 +10,13 @@
   .addSlot {
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
     align-items: center;
-    margin: 0 10%;
+
+    min-width: 14%;
     button {
       width: 4rem;
-      background: red;
+      background: #42db82;
       height: 4rem;
       border: none;
       border-radius: 50%;
@@ -25,9 +27,23 @@
         cursor: pointer;
       }
       &:disabled {
+        background: rgb(213, 236, 193);
+        cursor: not-allowed;
+      }
+    }
+    .btn-task {
+      background-color: red;
+      &:disabled {
         background: rgb(243, 201, 201);
         cursor: not-allowed;
       }
+    }
+    p {
+      color: rgb(12, 161, 17);
+      font-weight: bold;
+    }
+    .btn-task-desc {
+      color: red;
     }
   }
 }

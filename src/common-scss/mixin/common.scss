@@ -1,0 +1,5 @@
+@import "../colors.scss ";
+@mixin boxShadow {
+  box-shadow: -4px 2px 18px $base-color;
+  background-color: $base-color;
+}
