@@ -26,6 +26,9 @@
     border: none;
     &:hover {
       cursor: pointer;
+      &:enabled {
+        background-color: $base-color-dark;
+      }
     }
     @include boxShadow;
   }

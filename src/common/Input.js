@@ -1,6 +1,7 @@
 import "./style.scss";
 
 import React from "react";
+import Select from "./Select";
 
 function Input({
   type = "text",
@@ -12,7 +13,7 @@ function Input({
   value = "",
   onChange = () => {},
 }) {
-  return (
+  let input = (
     <div className="input-element">
       <label htmlFor={htmlFor}>
         <b>{label}</b>
@@ -28,6 +29,25 @@ function Input({
       />
     </div>
   );
+  if (type === "dropdown") {
+    input = (
+      <div className="input-element">
+        <label htmlFor={htmlFor}>
+          <b>{label}</b>
+        </label>
+        <Select
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          required={required}
+          className="input-tag"
+        />
+      </div>
+    );
+  }
+  return input;
 }
 
 export default Input;

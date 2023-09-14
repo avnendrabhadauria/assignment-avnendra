@@ -1,10 +1,12 @@
 import "./footer.scss";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
+import UserInputs from "./UserInputs";
 
 function Footer(props) {
+  const [state, setState] = useState(false);
   const {
     data,
     setData,
@@ -19,19 +21,39 @@ function Footer(props) {
       ];
       localStorage.setItem("dataLocal", JSON.stringify(finalData));
       return finalData;
-      // { [`count${count}`]: { title: "abc", desc: "abcd", index: 0 } }
     });
   };
   const totalCosumedMins = data?.reduce((total, d) => {
     return total + d?.timeOccupied;
   }, 0);
+  if (state) {
+    const scrollY =
+      document.documentElement.style.getPropertyValue("--scroll-y");
+    const body = document.body;
+    body.style.height = "100vh";
+    body.style.overflowY = "hidden";
+  } else {
+    const scrollY =
+      document.documentElement.style.getPropertyValue("--scroll-y");
+    const body = document.body;
+
+    body.style.overflowY = "auto";
+  }
+  const openAddItems = () => {
+    setState((prevState) => !prevState);
+  };
   return (
     <footer className="footer">
+      {state && (
+        <div className="input-details-container">
+          <UserInputs toggle={openAddItems} />
+        </div>
+      )}
       {data?.length > 0 && (
         <div className="addSlot">
           <button
             className="btn-task"
-            // onClick={addSlots}
+            onClick={openAddItems}
             disabled={totalTime - (totalCosumedMins + 30) < 0}
           >
             <i className="plus"></i>

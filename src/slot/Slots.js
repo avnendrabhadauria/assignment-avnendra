@@ -5,7 +5,7 @@ import Slot from "./Slot";
 
 function Slots() {
   const context = useContext(Context);
-  debugger;
+
   return (
     <div className="slots">
       {context?.data?.map((d, index) => (

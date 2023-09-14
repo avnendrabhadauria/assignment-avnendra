@@ -10,7 +10,13 @@ function Main(props) {
   const context = useContext(Context);
   return (
     <div className="main">
-      {context?.creds.userName === "" ? <Signin /> : <Content />}
+      {context?.creds.userName === "" ? (
+        <Signin />
+      ) : context.data?.length > 0 ? (
+        <Content />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

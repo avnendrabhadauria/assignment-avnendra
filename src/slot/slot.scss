@@ -1,22 +1,41 @@
-.slot {
-  box-shadow: -4px 2px 18px rgba(122, 178, 196, 0.87);
-  min-height: 200px;
-  min-width: 31.3%;
-  margin: 1%;
-  background-color: rgba(217, 232, 237, 0.87);
-}
+@import "../common-scss/colors.scss";
 .slots {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  .slot-placeholder {
+    min-width: 31.3%;
+    .slot {
+      box-shadow: -4px 2px 18px rgba(122, 178, 196, 0.87);
+      min-height: 200px;
+      margin: 3% 1%;
+      background-color: rgba(217, 232, 237, 0.87);
+      .slot-header {
+        padding: 1%;
+        div {
+          label {
+            border-radius: 8px;
+            background-color: #42db82;
+            display: inline-block;
+            padding: 1%;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-  .slot {
-    min-width: 100%;
+  .slots {
+    .slot-placeholder {
+      min-width: 100%;
+    }
   }
 }
 @media (max-width: 900px) and (min-width: 700px) {
-  .slot {
-    min-width: 31.3%;
+  .slots {
+    .slot-placeholder {
+      min-width: 31.3%;
+    }
   }
 }
