@@ -1,10 +1,13 @@
-@import "../common-scss/personalizeColors.scss";
+@import "../common-scss/mixin/common.scss";
 .slots {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   .slot-placeholder {
     min-width: 31.3%;
+    margin-left: 1.5%;
+    margin-bottom: 2%;
+
     .slot {
       box-shadow: -4px 2px 18px rgba(122, 178, 196, 0.87);
       min-height: 200px;
