@@ -5,7 +5,7 @@ import React from "react";
 import Tasks from "../task/Tasks";
 
 function Slot(props) {
-  const { data } = props;
+  const { data, index, deleteItem } = props;
   const style = {};
   const timeOccupiedbyAllTask = data?.task?.reduce((innerTotal, innerData) => {
     return innerTotal + Number(innerData?.time);
@@ -13,6 +13,7 @@ function Slot(props) {
   if (timeOccupiedbyAllTask > 30) {
     style.backgroundColor = "red";
   }
+
   return (
     <div className="slot-placeholder">
       <div className="slot">
@@ -23,7 +24,7 @@ function Slot(props) {
             </label>
           </div>
           <div className="slot-cancel">
-            <Cancel />
+            <Cancel onClick={() => deleteItem(index)} />
           </div>
         </header>
         <Tasks tasklist={data?.task} />

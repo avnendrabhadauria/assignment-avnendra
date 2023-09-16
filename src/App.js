@@ -27,9 +27,13 @@ function App(props) {
       return initialState;
     }
   });
+  const updateLocalAndState = (data) => {
+    setData(data);
+    localStorage.setItem("dataLocal", JSON.stringify(data));
+  };
   const { Provider } = Context;
   return (
-    <Provider value={{ creds, setCreds, data, setData }}>
+    <Provider value={{ creds, setCreds, data, setData, updateLocalAndState }}>
       <div className="app">
         <div className="container">
           <Header />
