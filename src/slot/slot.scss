@@ -15,12 +15,26 @@
       background-color: rgba(217, 232, 237, 0.87);
       .slot-header {
         padding: 1%;
-        div {
+        display: flex;
+        justify-content: space-between;
+        .slot-title {
+          min-width: 80%;
           label {
             border-radius: 8px;
             background-color: #42db82;
             display: inline-block;
             padding: 1%;
+          }
+        }
+        .slot-cancel {
+          min-width: 8%;
+
+          svg {
+            fill: $blue-color;
+            &:hover {
+              cursor: pointer;
+              fill: $base-red-color;
+            }
           }
         }
       }
