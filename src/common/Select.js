@@ -6,7 +6,7 @@ import Context from "../context/UserContext";
 
 function Select({ onChange }) {
   const { data } = useContext(Context);
-  const [toggle, setToggle] = useState(true);
+  const [, setToggle] = useState(true);
   const [value, setValue] = useState("");
   const onClick = (e) => {
     const slot = e?.target?.attributes?.value?.value;

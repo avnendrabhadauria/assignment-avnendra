@@ -38,14 +38,12 @@ function Footer(props) {
     return total + currectTime;
   }, 0);
   if (state) {
-    const scrollY =
-      document.documentElement.style.getPropertyValue("--scroll-y");
+    document.documentElement.style.getPropertyValue("--scroll-y");
     const body = document.body;
     body.style.height = "100vh";
     body.style.overflowY = "hidden";
   } else {
-    const scrollY =
-      document.documentElement.style.getPropertyValue("--scroll-y");
+    document.documentElement.style.getPropertyValue("--scroll-y");
     const body = document.body;
 
     body.style.overflowY = "auto";
