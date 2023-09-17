@@ -4,9 +4,13 @@ import React from "react";
 
 function Task({ details, index }) {
   return (
-    <div className="task">
-      Details: {details?.description} Time {details?.time}
-    </div>
+    <tr className="task row">
+      <td className="table-cell-desc">{details?.description}</td>
+
+      <td className="time">{details?.time}</td>
+      {/* Details: {details?.description} Time {details?.time} */}
+      <td className="action"></td>
+    </tr>
   );
 }
 

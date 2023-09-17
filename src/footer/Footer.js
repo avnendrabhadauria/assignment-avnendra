@@ -23,20 +23,34 @@ function Footer(props) {
       return finalData;
     });
   };
-  const totalCosumedMins = data?.reduce((total, outerData) => {
-    const timeOccupiedbyAllTask = outerData?.task?.reduce(
-      (innerTotal, innerData) => {
-        return innerTotal + Number(innerData?.time);
-      },
-      0
-    );
-    const currectTime =
-      timeOccupiedbyAllTask > outerData?.mintimeOccupied
-        ? timeOccupiedbyAllTask
-        : outerData?.mintimeOccupied;
+  let actual_timeCosumedinTask = 0;
+  let totaltimeCosumed = 0;
 
-    return total + currectTime;
-  }, 0);
+  data.forEach((outerData) => {
+    let all_innerTaskTime = outerData?.task?.reduce((innerTotal, innerData) => {
+      return innerTotal + Number(innerData?.time);
+    }, 0);
+    actual_timeCosumedinTask += all_innerTaskTime;
+    const currectTime =
+      all_innerTaskTime > outerData?.mintimeOccupied
+        ? all_innerTaskTime
+        : outerData?.mintimeOccupied;
+    totaltimeCosumed += currectTime;
+  });
+  // const totalCosumedMins = data?.reduce((total, outerData) => {
+  //   const timeOccupiedbyAllTask = outerData?.task?.reduce(
+  //     (innerTotal, innerData) => {
+  //       return innerTotal + Number(innerData?.time);
+  //     },
+  //     0
+  //   );
+  //   const currectTime =
+  //     timeOccupiedbyAllTask > outerData?.mintimeOccupied
+  //       ? timeOccupiedbyAllTask
+  //       : outerData?.mintimeOccupied;
+
+  //   return total + currectTime;
+  // }, 0);
   if (state) {
     document.documentElement.style.getPropertyValue("--scroll-y");
     const body = document.body;
@@ -63,7 +77,7 @@ function Footer(props) {
           <button
             className="btn-task"
             onClick={openAddItems}
-            disabled={totalTime - totalCosumedMins <= 0}
+            disabled={totalTime - actual_timeCosumedinTask <= 0}
           >
             <i className="plus"></i>
           </button>
@@ -74,11 +88,11 @@ function Footer(props) {
         <button
           className="btn-slot"
           onClick={addSlots}
-          disabled={totalTime - (totalCosumedMins + 30) < 0}
+          disabled={totalTime - (totaltimeCosumed + 30) < 0}
         >
           <i className="plus"></i>
         </button>
-        <p>{`Total hrs Left ${(totalTime - totalCosumedMins) / 60} hrs `}</p>
+        <p>{`Total hrs Left ${totalTime - totaltimeCosumed} min `}</p>
       </div>
     </footer>
   );

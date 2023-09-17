@@ -1,9 +1,45 @@
 .task-list {
-  .task {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
+  display: flex;
+  justify-content: center;
+  table {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    border-collapse: collapse;
+    width: 97%;
+  }
+
+  td,
+  th {
+    // border: 1px solid #e06eb5;
+    text-align: left;
+    padding: 8px 1%;
+  }
+  td {
+    font-weight: bold;
+    font-size: 1.2rem;
+    //#e06eb5;
+    text-transform: capitalize;
+  }
+  td.action {
+    width: 6%;
+  }
+  td.time {
+    width: 6%;
+  }
+  td.table-cell-desc {
     word-wrap: break-word;
+    word-break: break-all;
+    /* white-space: pre-wrap; */
+    width: 50%;
+    word-wrap: break-word;
+    // padding: 0 6%;
+  }
+  tr {
+    color: #fff;
+  }
+  tr.head {
+    background-image: linear-gradient(to bottom right, #000000, #9d9d33);
+  }
+  tr.row {
+    background-image: linear-gradient(to bottom right, #e50303, #cbd041);
   }
 }
