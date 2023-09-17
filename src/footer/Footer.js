@@ -21,7 +21,7 @@ function Footer(props) {
         ...prevState,
         {
           slot: newSlot,
-          mintimeOccupied: 30,
+          mintimeOccupied: MINIMUM_TIME_FOR_SLOT,
           task: [],
           timeCosumedByTasks: 0,
         },
@@ -31,20 +31,7 @@ function Footer(props) {
     });
   };
   const { actual_timeCosumedinTask, totaltimeCosumed } = getvalues(data);
-  // const totalCosumedMins = data?.reduce((total, outerData) => {
-  //   const timeOccupiedbyAllTask = outerData?.task?.reduce(
-  //     (innerTotal, innerData) => {
-  //       return innerTotal + Number(innerData?.time);
-  //     },
-  //     0
-  //   );
-  //   const currectTime =
-  //     timeOccupiedbyAllTask > outerData?.mintimeOccupied
-  //       ? timeOccupiedbyAllTask
-  //       : outerData?.mintimeOccupied;
 
-  //   return total + currectTime;
-  // }, 0);
   if (state) {
     document.documentElement.style.getPropertyValue("--scroll-y");
     const body = document.body;

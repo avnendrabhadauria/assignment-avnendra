@@ -16,6 +16,8 @@ function Signin(props) {
     localStorage.setItem("token", JSON.stringify(creds));
     context?.setCreds(creds);
     setCreds(initialState);
+    const logalData = JSON.parse(localStorage.getItem("dataLocal")) ?? [];
+    context?.setData(logalData);
   };
   const onChange = ({ currentTarget }) => {
     const { name, value } = currentTarget;

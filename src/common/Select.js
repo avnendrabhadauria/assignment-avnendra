@@ -11,7 +11,7 @@ function Select({ onChange }) {
   const [value, setValue] = useState("");
   const { totaltimeCosumed } = getvalues(data);
   const onClick = (e) => {
-    const slot = e?.target?.attributes?.value?.value;
+    const slot = e?.currentTarget?.attributes?.value?.value;
     setValue(slot);
     onChange({ currentTarget: { name: "slot", value: slot } });
     setToggle((prevState) => !prevState);
@@ -28,13 +28,13 @@ function Select({ onChange }) {
   });
   return (
     <div className="input-tag">
-      <div className="dropdown" onClick={onClick}>
+      <div className="dropdown">
         <div className="dropbtn">{value ? value : "Select Slots"}</div>
         {true && (
           <div className="dropdown-content">
             {filterData?.map(({ slot }, index) => (
-              <div key={slot + index} value={slot}>
-                {slot}
+              <div key={slot + index} value={slot} onClick={onClick}>
+                <p>{slot}</p>
               </div>
             ))}
           </div>

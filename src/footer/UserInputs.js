@@ -38,9 +38,9 @@ function UserInputs({ toggle }) {
   const onChange = ({ currentTarget }) => {
     let { name, value } = currentTarget;
     if (name === "slot") {
-      const [{ mintimeOccupied, timeCosumedByTasks }] = data?.filter(
+      const { mintimeOccupied, timeCosumedByTasks } = data?.filter(
         (d) => d.slot === value
-      );
+      )?.[0];
 
       const leftTimeforSlot = totalTime - totaltimeCosumed;
       if (timeCosumedByTasks > mintimeOccupied) {

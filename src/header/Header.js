@@ -10,7 +10,8 @@ function Header(props) {
   const clearData = () => {
     context?.setCreds(initialState);
     context?.setData([]);
-    localStorage.clear();
+    localStorage.removeItem("token");
+    // localStorage.clear();
   };
 
   return (
