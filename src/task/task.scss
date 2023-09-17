@@ -1,15 +1,14 @@
+@import "../common-scss/personalizeColors";
 .task-list {
   display: flex;
   justify-content: center;
   table {
-    background-image: linear-gradient(to bottom right, red, yellow);
     border-collapse: collapse;
     width: 97%;
   }
 
   td,
   th {
-    // border: 1px solid #e06eb5;
     text-align: left;
     padding: 8px 1%;
   }
@@ -34,7 +33,7 @@
     // padding: 0 6%;
   }
   tr {
-    color: #fff;
+    color: $base-white-color;
   }
   tr.head {
     background-image: linear-gradient(to bottom right, #000000, #9d9d33);

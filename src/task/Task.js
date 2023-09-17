@@ -1,5 +1,6 @@
 import "./task.scss";
 
+import { ReactComponent as Cancel } from "../assests/cancel.svg";
 import React from "react";
 
 function Task({ details, index }) {
@@ -9,7 +10,11 @@ function Task({ details, index }) {
 
       <td className="time">{details?.time}</td>
       {/* Details: {details?.description} Time {details?.time} */}
-      <td className="action"></td>
+      <td className="action">
+        <div className="slot-cancel">
+          <Cancel onClick={() => {}} />
+        </div>
+      </td>
     </tr>
   );
 }

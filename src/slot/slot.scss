@@ -23,23 +23,24 @@
           min-width: 80%;
           label {
             border-radius: 8px;
-            background-color: #42db82;
+            background-color: $base-black-color;
             display: inline-block;
+            color: $base-white-color;
             padding: 1%;
           }
         }
-        .slot-cancel {
-          min-width: 8%;
-          z-index: 1;
+      }
+    }
+  }
+  .slot-cancel {
+    min-width: 8%;
+    z-index: 1;
 
-          svg {
-            fill: $blue-color;
-            &:hover {
-              cursor: pointer;
-              fill: $base-red-color;
-            }
-          }
-        }
+    svg {
+      fill: $blue-color;
+      &:hover {
+        cursor: pointer;
+        fill: $base-red-color;
       }
     }
   }
