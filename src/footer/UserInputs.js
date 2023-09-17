@@ -4,15 +4,22 @@ import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
 import Input from "../common/Input";
+import { getvalues } from "../helper";
 
 function UserInputs({ toggle }) {
+  const [max, setMax] = useState(480);
   const [taskItem, setTaskItem] = useState({
     description: "",
     time: 0,
     slot: "",
   });
 
-  const { data, setData } = useContext(Context);
+  const {
+    data,
+    updateLocalAndState,
+    creds: { totalTime },
+  } = useContext(Context);
+  const { totaltimeCosumed } = getvalues(data);
 
   const add = (e) => {
     e.preventDefault();
@@ -20,15 +27,32 @@ function UserInputs({ toggle }) {
     newData?.forEach((d) => {
       if (taskItem.slot === d.slot) {
         d.task.push(taskItem);
+        d.timeCosumedByTasks += Number(taskItem?.time);
       }
     });
-    setData(newData);
-    localStorage.setItem("dataLocal", JSON.stringify(newData));
+
+    updateLocalAndState(newData);
     toggle();
   };
 
   const onChange = ({ currentTarget }) => {
-    const { name, value } = currentTarget;
+    let { name, value } = currentTarget;
+    if (name === "slot") {
+      const [{ mintimeOccupied, timeCosumedByTasks }] = data?.filter(
+        (d) => d.slot === value
+      );
+
+      const leftTimeforSlot = totalTime - totaltimeCosumed;
+      if (timeCosumedByTasks > mintimeOccupied) {
+        setMax(leftTimeforSlot);
+      } else {
+        setMax(mintimeOccupied + leftTimeforSlot);
+      }
+    } else if (name === "time") {
+      if (value > max) {
+        value = taskItem?.time;
+      }
+    }
     setTaskItem((prevState) => ({ ...prevState, [name]: value }));
   };
   return (
@@ -45,17 +69,6 @@ function UserInputs({ toggle }) {
             value={taskItem?.description}
             onChange={onChange}
           />
-
-          <Input
-            type="number"
-            placeholder="Enter time in miniutes"
-            name="time"
-            required={true}
-            label="Time"
-            htmlFor="time"
-            value={taskItem?.time}
-            onChange={onChange}
-          />
           <Input
             type="dropdown"
             placeholder="Select Slot"
@@ -66,6 +79,19 @@ function UserInputs({ toggle }) {
             value={taskItem?.slot}
             onChange={onChange}
           />
+          <Input
+            min="0"
+            max={max}
+            type="number"
+            placeholder="Enter time in miniutes"
+            name="time"
+            required={true}
+            label="Time (Mins)"
+            htmlFor="time"
+            value={taskItem?.time}
+            onChange={onChange}
+          />
+
           <div className="btn-form">
             <button
               className="add-btn"

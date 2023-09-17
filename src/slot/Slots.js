@@ -12,9 +12,11 @@ function Slots() {
   };
   const deleteTask = (taskIndex, slotIndex) => {
     let newData = context?.data?.slice();
-    let [dta] = newData?.slice(slotIndex, 1);
+    let [dta] = newData?.slice(slotIndex, slotIndex + 1);
+
     let tsk = dta?.task?.slice();
-    tsk.splice(taskIndex, 1);
+    const { slot } = tsk.splice(taskIndex, 1);
+    dta.timeCosumedByTasks = dta.timeCosumedByTasks - Number(slot);
     newData[slotIndex].task = tsk;
     context.updateLocalAndState(newData);
   };

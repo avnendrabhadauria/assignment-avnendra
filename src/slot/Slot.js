@@ -1,6 +1,7 @@
 import "./slot.scss";
 
 import { ReactComponent as Cancel } from "../assests/cancel.svg";
+import { MINIMUM_TIME_FOR_SLOT } from "../constant";
 import React from "react";
 import Tasks from "../task/Tasks";
 
@@ -10,8 +11,8 @@ function Slot(props) {
   const timeOccupiedbyAllTask = data?.task?.reduce((innerTotal, innerData) => {
     return innerTotal + Number(innerData?.time);
   }, 0);
-  if (timeOccupiedbyAllTask > 30) {
-    style.backgroundColor = "red";
+  if (timeOccupiedbyAllTask > MINIMUM_TIME_FOR_SLOT) {
+    style.backgroundColor = "#79040a";
   }
 
   return (
@@ -21,6 +22,9 @@ function Slot(props) {
           <div className="slot-title">
             <label style={style}>
               <strong>SLOT:</strong> {data?.slot}
+            </label>
+            <label>
+              <strong>Time Assigned:</strong> {data?.timeCosumedByTasks}
             </label>
           </div>
           <div className="slot-cancel">

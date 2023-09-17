@@ -12,6 +12,8 @@ function Input({
   label,
   value = "",
   onChange = () => {},
+  min,
+  max,
 }) {
   let input = (
     <div className="input-element">
@@ -19,6 +21,8 @@ function Input({
         <b>{label}</b>
       </label>
       <input
+        min={min}
+        max={max}
         type={type}
         value={value}
         placeholder={placeholder}

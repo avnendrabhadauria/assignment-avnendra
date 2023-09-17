@@ -3,7 +3,9 @@ import "./footer.scss";
 import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
+import { MINIMUM_TIME_FOR_SLOT } from "../constant";
 import UserInputs from "./UserInputs";
+import { getvalues } from "../helper";
 
 function Footer(props) {
   const [state, setState] = useState(false);
@@ -17,26 +19,18 @@ function Footer(props) {
       const newSlot = `slot${prevState?.length + 1}`;
       let finalData = [
         ...prevState,
-        { slot: newSlot, mintimeOccupied: 30, task: [] },
+        {
+          slot: newSlot,
+          mintimeOccupied: 30,
+          task: [],
+          timeCosumedByTasks: 0,
+        },
       ];
       localStorage.setItem("dataLocal", JSON.stringify(finalData));
       return finalData;
     });
   };
-  let actual_timeCosumedinTask = 0;
-  let totaltimeCosumed = 0;
-
-  data.forEach((outerData) => {
-    let all_innerTaskTime = outerData?.task?.reduce((innerTotal, innerData) => {
-      return innerTotal + Number(innerData?.time);
-    }, 0);
-    actual_timeCosumedinTask += all_innerTaskTime;
-    const currectTime =
-      all_innerTaskTime > outerData?.mintimeOccupied
-        ? all_innerTaskTime
-        : outerData?.mintimeOccupied;
-    totaltimeCosumed += currectTime;
-  });
+  const { actual_timeCosumedinTask, totaltimeCosumed } = getvalues(data);
   // const totalCosumedMins = data?.reduce((total, outerData) => {
   //   const timeOccupiedbyAllTask = outerData?.task?.reduce(
   //     (innerTotal, innerData) => {
@@ -82,17 +76,24 @@ function Footer(props) {
             <i className="plus"></i>
           </button>
           <p className="btn-task-desc">{`Add Task `}</p>
+          <p className="time-left">
+            (Time left {totalTime - actual_timeCosumedinTask} Mins)
+          </p>
         </div>
       )}
       <div className="addSlot">
         <button
           className="btn-slot"
           onClick={addSlots}
-          disabled={totalTime - (totaltimeCosumed + 30) < 0}
+          disabled={totalTime - (totaltimeCosumed + MINIMUM_TIME_FOR_SLOT) < 0}
         >
           <i className="plus"></i>
         </button>
-        <p>{`Total hrs Left ${totalTime - totaltimeCosumed} min `}</p>
+        <p>Add Slots</p>
+        <p className="time-left">
+          (No Possible Slots{" "}
+          {(totalTime - totaltimeCosumed) / MINIMUM_TIME_FOR_SLOT} )
+        </p>
       </div>
     </footer>
   );
