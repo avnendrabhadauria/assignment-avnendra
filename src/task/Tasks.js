@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-function Tasks({ tasklist }) {
+function Tasks({ tasklist, deleteTask, slotIndex }) {
   return (
     <div className="task-list">
       <table>
@@ -12,7 +12,13 @@ function Tasks({ tasklist }) {
         </tr>
 
         {tasklist?.map((d, index) => (
-          <Task key={d + index} details={d} />
+          <Task
+            key={d + index}
+            details={d}
+            index={index}
+            deleteTask={deleteTask}
+            slotIndex={slotIndex}
+          />
         ))}
       </table>
     </div>

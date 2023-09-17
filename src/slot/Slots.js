@@ -10,10 +10,24 @@ function Slots() {
     newData?.splice(index, 1);
     context.updateLocalAndState(newData);
   };
+  const deleteTask = (taskIndex, slotIndex) => {
+    let newData = context?.data?.slice();
+    let [dta] = newData?.slice(slotIndex, 1);
+    let tsk = dta?.task?.slice();
+    tsk.splice(taskIndex, 1);
+    newData[slotIndex].task = tsk;
+    context.updateLocalAndState(newData);
+  };
   return (
     <div className="slots">
       {context?.data?.map((d, index) => (
-        <Slot key={d + index} index={index} data={d} deleteItem={deleteItem} />
+        <Slot
+          key={d + index}
+          index={index}
+          data={d}
+          deleteItem={deleteItem}
+          deleteTask={deleteTask}
+        />
       ))}
     </div>
   );
