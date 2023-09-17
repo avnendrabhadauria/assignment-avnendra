@@ -14,7 +14,7 @@
       box-shadow: -4px 2px 18px rgba(122, 178, 196, 0.87);
       min-height: 200px;
       margin: 3% 1%;
-      background-color: rgba(217, 232, 237, 0.87);
+      background-color: $base-grey-light;
       .slot-header {
         padding: 1%;
         display: flex;
@@ -23,7 +23,7 @@
           min-width: 80%;
           label {
             border-radius: 8px;
-            background-color: $base-black-color;
+            background-color: $base-color-light-dark;
             display: inline-block;
             color: $base-white-color;
             padding: 1%;
