@@ -6,10 +6,10 @@
   form {
     width: 34%;
     padding: 2%;
-    border: 1px solid #fff;
+    border: 1px solid $base-white-color;
     border-radius: 23px;
-    background-color: #fff;
-    box-shadow: -4px 6px 13px #fff;
+    background-color: $base-white-color;
+    box-shadow: -4px 6px 13px $base-white-color;
   }
   .btn-form {
     display: flex;
@@ -24,7 +24,6 @@
       background-color: $base-red-color;
       &:hover {
         &:enabled {
-          //   background-color: aquamarine;
           cursor: pointer;
         }
       }
