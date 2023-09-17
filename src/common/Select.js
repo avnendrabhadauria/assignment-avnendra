@@ -1,6 +1,6 @@
 import "./style.scss";
 
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import Context from "../context/UserContext";
 import { getvalues } from "../helper";
@@ -9,7 +9,7 @@ function Select({ onChange }) {
   const { data } = useContext(Context);
   const [, setToggle] = useState(true);
   const [value, setValue] = useState("");
-  const { actual_timeCosumedinTask, totaltimeCosumed } = getvalues(data);
+  const { totaltimeCosumed } = getvalues(data);
   const onClick = (e) => {
     const slot = e?.target?.attributes?.value?.value;
     setValue(slot);
