@@ -4,9 +4,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  column-gap: 2%;
   .slot-placeholder {
-    min-width: 31.3%;
-    margin-left: 1.5%;
+    min-width: 32%;
+
     margin-bottom: 2%;
 
     .slot {
@@ -29,6 +30,7 @@
         }
         .slot-cancel {
           min-width: 8%;
+          z-index: 1;
 
           svg {
             fill: $blue-color;
