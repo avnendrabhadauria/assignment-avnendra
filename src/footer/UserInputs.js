@@ -10,7 +10,7 @@ function UserInputs({ toggle, initialTime }) {
   const [max, setMax] = useState(initialTime);
   const [taskItem, setTaskItem] = useState({
     description: "",
-    time: 0,
+    time: 1,
     slot: "",
   });
 
@@ -81,7 +81,7 @@ function UserInputs({ toggle, initialTime }) {
             isDisabled={!taskItem?.description}
           />
           <Input
-            min="0"
+            min="1"
             max={max}
             type="number"
             placeholder="Enter time in miniutes"
@@ -95,6 +95,9 @@ function UserInputs({ toggle, initialTime }) {
           />
 
           <div className="btn-form">
+            <button className="cancel-btn" onClick={toggle}>
+              Cancel
+            </button>
             <button
               className="add-btn"
               disabled={
@@ -105,9 +108,6 @@ function UserInputs({ toggle, initialTime }) {
               onClick={add}
             >
               Add
-            </button>
-            <button className="cancel-btn" onClick={toggle}>
-              Cancel
             </button>
           </div>
         </div>

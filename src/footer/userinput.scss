@@ -19,6 +19,7 @@
       padding: 1% 7%;
       border-radius: 8px;
       font-size: 1rem;
+      border: none;
     }
     .cancel-btn {
       background-color: $base-red-color;
@@ -29,11 +30,9 @@
       }
     }
     .add-btn {
-      &:hover {
-        &:enabled {
-          background-color: aquamarine;
-          cursor: pointer;
-        }
+      &:enabled {
+        background-color: $base-color;
+        cursor: pointer;
       }
     }
   }
