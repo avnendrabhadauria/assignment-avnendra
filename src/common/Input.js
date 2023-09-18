@@ -14,10 +14,11 @@ function Input({
   onChange = () => {},
   min,
   max,
+  isDisabled = false,
 }) {
   let input = (
     <div className="input-element">
-      <label htmlFor={htmlFor}>
+      <label htmlFor={htmlFor} disable={isDisabled}>
         <b>{label}</b>
       </label>
       <input
@@ -30,16 +31,21 @@ function Input({
         onChange={onChange}
         required={required}
         className="input-tag"
+        disabled={isDisabled}
       />
+      {type === "number" && (
+        <p className="max-count-p">max allowed: {max} mins</p>
+      )}
     </div>
   );
   if (type === "dropdown") {
     input = (
-      <div className="input-element">
+      <div className="input-element" aria-disabled={isDisabled}>
         <label htmlFor={htmlFor}>
           <b>{label}</b>
         </label>
         <Select
+          disabled={isDisabled}
           type={type}
           value={value}
           placeholder={placeholder}

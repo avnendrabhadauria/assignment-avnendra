@@ -6,8 +6,8 @@ import Context from "../context/UserContext";
 import Input from "../common/Input";
 import { getvalues } from "../helper";
 
-function UserInputs({ toggle }) {
-  const [max, setMax] = useState(480);
+function UserInputs({ toggle, initialTime }) {
+  const [max, setMax] = useState(initialTime);
   const [taskItem, setTaskItem] = useState({
     description: "",
     time: 0,
@@ -46,7 +46,7 @@ function UserInputs({ toggle }) {
       if (timeCosumedByTasks > mintimeOccupied) {
         setMax(leftTimeforSlot);
       } else {
-        setMax(mintimeOccupied + leftTimeforSlot);
+        setMax(mintimeOccupied - timeCosumedByTasks + leftTimeforSlot);
       }
     } else if (name === "time") {
       if (value > max) {
@@ -78,6 +78,7 @@ function UserInputs({ toggle }) {
             htmlFor="slot"
             value={taskItem?.slot}
             onChange={onChange}
+            isDisabled={!taskItem?.description}
           />
           <Input
             min="0"
@@ -90,6 +91,7 @@ function UserInputs({ toggle }) {
             htmlFor="time"
             value={taskItem?.time}
             onChange={onChange}
+            isDisabled={!taskItem?.description}
           />
 
           <div className="btn-form">

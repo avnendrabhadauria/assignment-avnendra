@@ -16,15 +16,64 @@
     align-items: center;
 
     min-width: 14%;
+    // button {
+    //   width: 4rem;
+    //   background: $base-color;
+    //   height: 4rem;
+    //   border: none;
+    //   border-radius: 50%;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   &:hover {
+    //     cursor: pointer;
+    //     &:enabled {
+    //       background: $base-color-dark;
+    //     }
+    //   }
+    //   &:disabled {
+    //     background: rgb(213, 236, 193);
+    //     cursor: not-allowed;
+    //   }
+    // }
     button {
       width: 4rem;
-      background: $base-color;
       height: 4rem;
       border: none;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    p {
+      font-weight: bold;
+    }
+  }
+  .addSlot.btn-task {
+    button {
+      background-color: $base-red-color;
+      &:disabled {
+        background: rgb(243, 201, 201);
+        cursor: not-allowed;
+      }
+      &:hover {
+        cursor: pointer;
+        &:enabled {
+          background: $base-red-dark-color;
+        }
+      }
+    }
+    .btn-task-desc {
+      color: $base-red-color;
+    }
+    p,
+    .time-left {
+      color: $base-red-color;
+    }
+  }
+  .addSlot.btn-slot {
+    button {
+      background-color: $base-color;
       &:hover {
         cursor: pointer;
         &:enabled {
@@ -32,30 +81,19 @@
         }
       }
       &:disabled {
-        background: rgb(213, 236, 193);
+        background: $base-color-light-dark;
         cursor: not-allowed;
       }
-    }
-    .btn-task {
-      background-color: red;
-
-      &:disabled {
-        background: rgb(243, 201, 201);
-        cursor: not-allowed;
-      }
-    }
-    p {
-      color: $base-color;
-
-      font-weight: bold;
-    }
-    .time-left {
-      font-size: 0.8rem;
     }
     .btn-task-desc {
-      color: red;
+      color: $base-color;
+    }
+    p,
+    .time-left {
+      color: $base-color;
     }
   }
+
   .input-details-container {
     position: fixed;
 

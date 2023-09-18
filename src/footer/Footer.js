@@ -50,13 +50,15 @@ function Footer(props) {
     <footer className="footer">
       {state && (
         <div className="input-details-container">
-          <UserInputs toggle={openAddItems} />
+          <UserInputs
+            toggle={openAddItems}
+            initialTime={totalTime - actual_timeCosumedinTask}
+          />
         </div>
       )}
       {data?.length > 0 && (
-        <div className="addSlot">
+        <div className="addSlot btn-task">
           <button
-            className="btn-task"
             onClick={openAddItems}
             disabled={totalTime - actual_timeCosumedinTask <= 0}
           >
@@ -68,9 +70,8 @@ function Footer(props) {
           </p>
         </div>
       )}
-      <div className="addSlot">
+      <div className="addSlot btn-slot">
         <button
-          className="btn-slot"
           onClick={addSlots}
           disabled={totalTime - (totaltimeCosumed + MINIMUM_TIME_FOR_SLOT) < 0}
         >
@@ -79,7 +80,7 @@ function Footer(props) {
         <p>Add Slots</p>
         <p className="time-left">
           (No Possible Slots{" "}
-          {(totalTime - totaltimeCosumed) / MINIMUM_TIME_FOR_SLOT} )
+          {Math.floor((totalTime - totaltimeCosumed) / MINIMUM_TIME_FOR_SLOT)} )
         </p>
       </div>
     </footer>
